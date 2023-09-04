@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { addNote } from "../helpers/addNote";
 
 const CardCreator = () => {
   const [dataForm, setDataForm] = useState({});
 
+  let cardTitle = document.getElementById("cardTitle");
+  let cardText = document.getElementById("cardText");
+
   const handleChange = (e) => {
     setDataForm({ ...dataForm, [e.target.name]: e.target.value });
   };
-  //   console.log(dataForm);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes enviar los datos del formulario a donde los necesites
-    console.log(dataForm);
+    if (cardTitle.value === "" || cardText.value === "") {
+      return;
+    }
+
+    cardTitle.value = "";
+    cardText.value = "";
+    addNote(dataForm);
   };
 
   return (
@@ -21,6 +29,7 @@ const CardCreator = () => {
         <div className="card-body">
           <div className="card-title">
             <input
+              id="cardTitle"
               name="cardTitle"
               className="form-control"
               type="text"
@@ -30,6 +39,7 @@ const CardCreator = () => {
           </div>
           <div className="card-text mb-2">
             <textarea
+              id="cardText"
               name="cardText"
               className="form-control"
               type="text"
