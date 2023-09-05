@@ -24,7 +24,7 @@ const CardCreator = () => {
   };
 
   return (
-    <div className="card ms-3 mt-5 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+    <div className="card mt-5 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
       <form onSubmit={handleSubmit}>
         <div className="card-body">
           <div className="card-title">

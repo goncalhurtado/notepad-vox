@@ -9,10 +9,12 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="row">
-      <CardCreator />
+    <div className="container-fluid">
+      <div className="row">
+        <CardCreator />
 
-      <NoteGrid />
+        <NoteGrid />
+      </div>
     </div>
   );
 }
