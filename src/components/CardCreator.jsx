@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { addNote } from "../helpers/addNote";
+import { fetchNotes } from "../helpers/fetchNotes";
 
-const CardCreator = () => {
+const CardCreator = ({ setNotes }) => {
   const [dataForm, setDataForm] = useState({});
 
   let cardTitle = document.getElementById("cardTitle");
   let cardText = document.getElementById("cardText");
+
+  const clearForm = () => {
+    cardTitle.value = "";
+    cardText.value = "";
+  };
 
   const handleChange = (e) => {
     setDataForm({ ...dataForm, [e.target.name]: e.target.value });
@@ -17,10 +24,9 @@ const CardCreator = () => {
     if (cardTitle.value === "" || cardText.value === "") {
       return;
     }
-
-    cardTitle.value = "";
-    cardText.value = "";
     addNote(dataForm);
+    clearForm();
+    fetchNotes(setNotes);
   };
 
   return (
@@ -56,6 +62,9 @@ const CardCreator = () => {
       </form>
     </div>
   );
+};
+CardCreator.propTypes = {
+  setNotes: PropTypes.func.isRequired, // setNotes debe ser una función y es requerida
 };
 
 export default CardCreator;

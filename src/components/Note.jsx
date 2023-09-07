@@ -1,10 +1,13 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { deleteNote } from "../helpers/deleteNote";
+import { fetchNotes } from "../helpers/fetchNotes";
 
-const Note = ({ note }) => {
+const Note = ({ note, setNotes }) => {
+  const { key, cardText, cardTitle, time } = note;
   function handle() {
-    deleteNote(note.key);
+    deleteNote(key);
+    fetchNotes(setNotes);
   }
 
   return (
@@ -12,14 +15,14 @@ const Note = ({ note }) => {
       <div className="card-body">
         <div className="card-title">
           <h3 id="cardTitle" name="cardTitle" className="" type="text">
-            {note.cardTitle}
+            {cardTitle}
           </h3>
         </div>
         <div className="card-text mb-2">
           <p id="cardText" name="cardText" className="" type="text">
-            {note.cardText}
+            {cardText}
           </p>
-          <p>{note.time}</p>
+          <p>{time}</p>
           <a onClick={handle} className="btn bi bi-trash3"></a>
         </div>
       </div>

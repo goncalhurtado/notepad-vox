@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-let currentNotes = JSON.parse(localStorage.getItem("notes")) || [];
+JSON.parse(localStorage.getItem("notes")) || [];
 
 export function addNote(note) {
 
@@ -18,5 +18,15 @@ export function addNote(note) {
     currentNotes.push(note);
 
     localStorage.setItem("notes", JSON.stringify(currentNotes));
-    console.log(currentNotes);
+
+    updateData();
+}
+
+export function updateData() {
+
+    const notesString = localStorage.getItem("notes");
+    const notes = JSON.parse(notesString);
+    return notes;
+    // console.log(notes, "probando");
+
 }
