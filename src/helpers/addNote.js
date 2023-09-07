@@ -10,7 +10,7 @@ export function addNote(note) {
 
     const date = new Date();
 
-    const noteDate = format(date, "dd/MM/yyyy HH:mm:ss");
+    const noteDate = format(date, "dd/MM HH:mm");
 
     note.key = randomKey;
     note.time = noteDate;
@@ -27,6 +27,5 @@ export function updateData() {
     const notesString = localStorage.getItem("notes");
     const notes = JSON.parse(notesString);
     return notes;
-    // console.log(notes, "probando");
 
 }
