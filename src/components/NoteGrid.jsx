@@ -14,7 +14,4 @@ const NoteGrid = ({ notes, setNotes }) => {
   );
 };
 
-NoteGrid.propTypes = {
-  notes: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-};
 export default NoteGrid;

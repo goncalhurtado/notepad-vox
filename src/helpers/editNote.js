@@ -7,7 +7,6 @@ export const editNote = (dataForm, key) => {
 
     const indexToEdit = notes.findIndex((note) => note.key === key);
 
-
     notes[indexToEdit].cardText = dataForm.cardText;
     notes[indexToEdit].cardTitle = dataForm.cardTitle;
 

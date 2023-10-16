@@ -6,6 +6,9 @@ import { fetchNotes } from "../helpers/fetchNotes";
 
 const CardCreator = ({ setNotes }) => {
   const [dataForm, setDataForm] = useState({});
+  const [countText, setCountText] = useState(0);
+  const [countTitle, setCountTitle] = useState(0);
+  const [show, setShow] = useState(true);
 
   let cardTitle = document.getElementById("cardTitle");
   let cardText = document.getElementById("cardText");
@@ -15,8 +18,13 @@ const CardCreator = ({ setNotes }) => {
     cardText.value = "";
   };
 
-  const handleChange = (e) => {
+  const handleChangeTitle = (e) => {
     setDataForm({ ...dataForm, [e.target.name]: e.target.value });
+    setCountTitle(e.target.value.length);
+  };
+  const handleChangeText = (e) => {
+    setDataForm({ ...dataForm, [e.target.name]: e.target.value });
+    setCountText(e.target.value.length);
   };
 
   const handleSubmit = (e) => {
@@ -27,6 +35,8 @@ const CardCreator = ({ setNotes }) => {
     addNote(dataForm);
     clearForm();
     fetchNotes(setNotes);
+    setCountText(0);
+    setCountTitle(0);
   };
 
   return (
@@ -40,7 +50,11 @@ const CardCreator = ({ setNotes }) => {
               className="form-control"
               type="text"
               placeholder="Add title here"
-              onChange={handleChange}
+              onChange={handleChangeTitle}
+              maxLength="25"
+              onClick={() => {
+                setShow(false), console.log(show);
+              }}
             />
           </div>
           <div className="card-text mb-2">
@@ -50,21 +64,43 @@ const CardCreator = ({ setNotes }) => {
               className="form-control"
               type="text"
               placeholder="Add text here"
-              onChange={handleChange}
+              onChange={handleChangeText}
+              maxLength="132"
+              onClick={() => {
+                setShow(true), console.log(show);
+              }}
             ></textarea>
           </div>
-          <div className="">
-            <button type="submit" className="btn btn-primary">
-              Save
-            </button>
+          <div className="row d-flex align-items-center justify-content-center">
+            <div className="col-3"></div>
+
+            <div
+              className={
+                show ? "col-6 text-center d-none" : "col-6 text-center"
+              }
+            >
+              {countTitle}/25
+            </div>
+
+            <div
+              className={
+                !show ? "col-6 text-center d-none" : "col-6 text-center"
+              }
+            >
+              {countText}/132
+            </div>
+
+            <div className="col-3">
+              {" "}
+              <button type="submit" className="btn btn-primary">
+                Save
+              </button>
+            </div>
           </div>
         </div>
       </form>
     </div>
   );
-};
-CardCreator.propTypes = {
-  setNotes: PropTypes.func.isRequired, // setNotes debe ser una función y es requerida
 };
 
 export default CardCreator;

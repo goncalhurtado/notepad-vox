@@ -20,14 +20,11 @@ const Note = ({ note, setNotes }) => {
   function handleEdit(e) {
     setEdit(true);
     setDataForm({ ...dataForm, [e.target.name]: e.target.value });
-    dataForm = note;
   }
 
   const handleChange = (e) => {
     setDataForm({ ...dataForm, [e.target.name]: e.target.value });
   };
-
-  const titulo = document.getElementsByClassName("titleEdit");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -35,10 +32,13 @@ const Note = ({ note, setNotes }) => {
       dataForm.cardTitle === note.cardTitle &&
       dataForm.cardText === note.cardText
     ) {
-      // No se realizaron cambios, salimos de la edición
       setEdit(false);
       return;
     }
+    if (dataForm.cardTitle === "" && dataForm.cardText === "") {
+      dataForm.cardText = "Empty Note";
+    }
+
     editNote(dataForm, key);
     fetchNotes(setNotes);
     setEdit(false);
@@ -59,15 +59,14 @@ const Note = ({ note, setNotes }) => {
                 defaultValue={cardTitle}
               />
             ) : (
-              <h4
+              <input
                 id="cardTitle"
                 name="cardTitle"
-                className=""
+                className="form-control border-back"
                 type="text"
                 onClick={handleEdit}
-              >
-                {cardTitle}
-              </h4>
+                defaultValue={cardTitle}
+              />
             )}
           </div>
           <div className="card-text mb-2">
@@ -85,25 +84,31 @@ const Note = ({ note, setNotes }) => {
                 onClick={handleEdit}
                 id="cardText"
                 name="cardText"
-                className="textEdit"
+                className="textEdit form-control border-back"
                 type="text"
               >
                 {cardText}
               </p>
             )}
-            <div className="d-flex align-items-center">
-              <p className="m-0">{time}</p>
+          </div>
+          <div className="row ">
+            <div className="col-3">
               <a onClick={handle} className="btn bi bi-trash3 p-0"></a>
             </div>
-          </div>
-          <div className="">
-            {edit ? (
-              <button type="submit" className="btn btn-primary">
-                Save
-              </button>
-            ) : (
-              ""
-            )}
+            <div className="col-6">
+              <p className="m-0">{time}</p>
+            </div>{" "}
+            <div className="col-3 d-flex justify-content-center align-items-center">
+              {edit ? (
+                <button type="submit" className="btn btn-primary">
+                  Save
+                </button>
+              ) : (
+                <a onClick={handleEdit} className="btn btn-outline-secondary">
+                  Edit
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </form>
