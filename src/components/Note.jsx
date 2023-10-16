@@ -11,7 +11,7 @@ const Note = ({ note, setNotes }) => {
     cardText: note.cardText,
   });
 
-  const { key, cardText, cardTitle, time } = note;
+  const { key, cardText, cardTitle, time, color } = note;
   function handle() {
     deleteNote(key);
     fetchNotes(setNotes);
@@ -45,7 +45,9 @@ const Note = ({ note, setNotes }) => {
   }
 
   return (
-    <div className="card mt-5 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+    <div
+      className={`card ${color} mt-5 d-flex justify-content-center col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4`}
+    >
       <form onSubmit={handleSubmit}>
         <div className="card-body">
           <div className="card-title">

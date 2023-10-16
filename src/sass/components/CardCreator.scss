@@ -7,3 +7,87 @@ textarea {
     width: 100% !important;
     height: 150px !important;
 }
+
+.yellow {
+    background-color: rgb(247, 247, 101);
+
+    input {
+        background-color: rgb(247, 247, 101);
+    }
+
+    input:focus {
+        background-color: rgb(247, 247, 101);
+    }
+
+    textarea {
+        background-color: rgb(247, 247, 101);
+    }
+
+    textarea:focus {
+        background-color: rgb(247, 247, 101);
+    }
+
+    p {
+        background-color: rgb(247, 247, 101);
+    }
+
+    select {
+        background-color: rgb(247, 247, 101);
+    }
+}
+
+.red {
+    background-color: rgb(249, 93, 93);
+
+    input {
+        background-color: rgb(249, 93, 93);
+    }
+
+    input:focus {
+        background-color: rgb(249, 93, 93);
+    }
+
+    textarea {
+        background-color: rgb(249, 93, 93);
+    }
+
+    textarea:focus {
+        background-color: rgb(249, 93, 93);
+    }
+
+    p {
+        background-color: rgb(249, 93, 93);
+    }
+
+    select {
+        background-color: rgb(249, 93, 93);
+    }
+}
+
+.blue {
+    background-color: rgb(116, 116, 255);
+
+    input {
+        background-color: rgb(116, 116, 255);
+    }
+
+    input:focus {
+        background-color: rgb(116, 116, 255);
+    }
+
+    textarea {
+        background-color: rgb(116, 116, 255);
+    }
+
+    textarea:focus {
+        background-color: rgb(116, 116, 255);
+    }
+
+    p {
+        background-color: rgb(116, 116, 255)
+    }
+
+    select {
+        background-color: rgb(116, 116, 255);
+    }
+}

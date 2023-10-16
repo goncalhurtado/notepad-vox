@@ -9,6 +9,12 @@ const CardCreator = ({ setNotes }) => {
   const [countText, setCountText] = useState(0);
   const [countTitle, setCountTitle] = useState(0);
   const [show, setShow] = useState(true);
+  const [color, setColor] = useState("yellow");
+
+  const handleChangeColor = (e) => {
+    setColor(e.target.value);
+    setDataForm({ ...dataForm, [e.target.name]: e.target.value });
+  };
 
   let cardTitle = document.getElementById("cardTitle");
   let cardText = document.getElementById("cardText");
@@ -40,7 +46,7 @@ const CardCreator = ({ setNotes }) => {
   };
 
   return (
-    <div className="card mt-5 col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4">
+    <div className={`card ${color} mt-5 d-flex justify-content-center`}>
       <form onSubmit={handleSubmit}>
         <div className="card-body">
           <div className="card-title">
@@ -53,7 +59,7 @@ const CardCreator = ({ setNotes }) => {
               onChange={handleChangeTitle}
               maxLength="25"
               onClick={() => {
-                setShow(false), console.log(show);
+                setShow(false);
               }}
             />
           </div>
@@ -67,12 +73,23 @@ const CardCreator = ({ setNotes }) => {
               onChange={handleChangeText}
               maxLength="132"
               onClick={() => {
-                setShow(true), console.log(show);
+                setShow(true);
               }}
             ></textarea>
           </div>
           <div className="row d-flex align-items-center justify-content-center">
-            <div className="col-3"></div>
+            <div className="col-3">
+              <select
+                className="form-select"
+                defaultValue={color}
+                onChange={handleChangeColor}
+                name="color"
+              >
+                <option value="yellow">Yellow</option>
+                <option value="blue">Blue</option>
+                <option value="red">Red</option>
+              </select>
+            </div>
 
             <div
               className={
