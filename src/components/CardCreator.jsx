@@ -46,7 +46,7 @@ const CardCreator = ({ setNotes }) => {
 
   return (
     <div
-      className={`col-12 col-sm-6 col-md-4 card ${color} mt-5 justify-content-center`}
+      className={`col-12 col-sm-6 col-md-4 card ${color} mt-2 justify-content-center`}
     >
       <form onSubmit={handleSubmit}>
         <div className="card-body">
