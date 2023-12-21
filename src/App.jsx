@@ -13,8 +13,8 @@ function App() {
   }, []);
 
   return (
-    <div className="container-fluid">
-      <div className="row">
+    <div className="container">
+      <div className="row w-100 d-lg-flex justify-content-center justify-content-lg-start">
         <CardCreator setNotes={setNotes} />
 
         <NoteGrid notes={notes} setNotes={setNotes} />

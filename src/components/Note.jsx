@@ -45,9 +45,7 @@ const Note = ({ note, setNotes }) => {
   }
 
   return (
-    <div
-      className={`card ${color} mt-5 d-flex justify-content-center col-sm-4 col-md-4 col-lg-4 col-xl-4 col-xxl-4`}
-    >
+    <div className={`col-12 col-sm-6 col-md-4 card ${color} mt-5 `}>
       <form onSubmit={handleSubmit}>
         <div className="card-body">
           <div className="card-title">

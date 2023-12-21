@@ -9,7 +9,6 @@ const NoteGrid = ({ notes, setNotes }) => {
       {notes?.map((note) => (
         <Note key={note.key} note={note} setNotes={setNotes} />
       ))}
-      {/* <CardCreator handleAddNote={handleAddNote} /> */}
     </>
   );
 };
