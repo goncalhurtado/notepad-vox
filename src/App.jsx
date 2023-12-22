@@ -25,14 +25,14 @@ function App() {
       <div className="w-100 bg-primary text-center">
         <h4 className="p-0 p-2">Color NotePad</h4>
       </div>
-      <div className="container h-100">
-        <div className="row w-100 d-lg-flex justify-content-center justify-content-lg-start">
+      <div className="container h-100 ">
+        <div className="row h-100 w-100 d-lg-flex justify-content-center justify-content-lg-start">
           <CardCreator setNotes={setNotes} />
 
           <NoteGrid notes={notes} setNotes={setNotes} />
         </div>
       </div>
-      <div className="w-100 mt-3 p-1 bg-primary text-center d-flex justify-content-center align-items-center">
+      <div className="contFooter mt-3 p-1 bg-primary text-center d-flex justify-content-center align-items-center">
         <h5 className="m-0 p-0 p-2">Develop By Goncal Hurtado</h5>
         <i
           onClick={handle}
